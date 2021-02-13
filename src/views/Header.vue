@@ -26,6 +26,11 @@
               >
             </li>
 
+            <li class="nav-item">
+              <router-link class="nav-link active" to="/tercero"
+                >Tercera views</router-link
+              >
+            </li>
           </ul>
         </div>
       </div>

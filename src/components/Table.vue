@@ -1,9 +1,12 @@
 <template>
   <div>
+    <button class="btn btn-primary" @click="filtrar()">Filtrar nuevos</button>
+
     <input type="text" v-model="puesto" />
     <input type="text" v-model="nombre" />
     <input type="text" v-model="fecha" />
     <button class="btn btn-success" @click="agregar()">Agregar</button>
+
     <table class="table table-dark table-striped">
       <thead>
         <tr>
@@ -18,12 +21,13 @@
           <td>{{ lenguaje.puesto }}</td>
           <td>{{ lenguaje.nombre }}</td>
           <td>{{ lenguaje.fecha }}</td>
-          <!-- agregar botones de editar y eliminar -->
-          <button class="btn btn-warning">Editar</button>
 
+          <!-- agregar botones de editar y eliminar -->
+          <button class="btn btn-warning" @click="editar()">Editar</button>
           <button class="btn btn-danger" @click="eliminar(lenguaje.id)">
             Eliminar
           </button>
+
           <td></td>
         </tr>
       </tbody>
@@ -41,11 +45,15 @@ export default {
       puesto: "",
       nombre: "",
       fecha: "",
+      
     };
   },
+
+  // hook
   mounted() {
     this.getLenguajes();
   },
+
   methods: {
     getLenguajes() {
       fetch("https://602549ce36244d001797bed6.mockapi.io/Lenguajes")
@@ -54,6 +62,7 @@ export default {
           this.lenguajes = data;
         });
     },
+
     agregar() {
       this.lenguajes.push({
         puesto: this.puesto,
@@ -62,10 +71,21 @@ export default {
       });
       (this.puesto = ""), (this.nombre = ""), (this.fecha = "");
     },
+
     eliminar(id) {
       this.lenguajes = this.lenguajes.filter((lenguaje) => lenguaje.id !== id);
     },
-    editar() {},
+
+    editar() {
+      console.log(event.target.innerHTML);
+    },
+
+    filtrar() {
+      this.lenguajes = this.lenguajes.filter(
+        (lenguaje) => lenguaje.fecha >= 2000
+      );
+      console.log(this.lenguajes);
+    },
   },
 };
 </script>

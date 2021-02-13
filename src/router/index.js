@@ -4,11 +4,9 @@ import Home from '../views/Home.vue'
 import Table from '../components/Table.vue'
 
 
-
-
 Vue.use(VueRouter)
 
-// declaro todas las rutas de navegacion
+// crear 3 rutas distintas
 const routes = [
   {
     path: '/',
@@ -20,8 +18,11 @@ const routes = [
     name: 'Table',
     component: Table
   },
+  {
+    path: '/tercero',
+    name: 'Tercera views',
 
-
+  },
 ]
 
 const router = new VueRouter({

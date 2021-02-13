@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <h3>{{ titulo }}</h3>
+    <h3 v-miDirectiva="'lightgrey'">{{ titulo | toUppercase }}</h3>
     <Carrusel></Carrusel>
+    <h3 v-miDirectiva="'lightgrey'">{{ parrafo }}</h3>
     <Cards></Cards>
   </div>
 </template>
@@ -11,15 +12,17 @@ import Carrusel from "../components/Carrusel";
 import Cards from "../components/Cards";
 
 export default {
-  data() {
-    return {
-      titulo: "¿Qué es HTML/CSS/JS?",
-    };
-  },
   name: "Home",
   components: {
     Carrusel,
     Cards,
+  },
+  data() {
+    return {
+      titulo: "¿Qué es HTML/CSS/JS?",
+      parrafo:
+        "HTML, CSS y JavaScript son los tres lenguajes que se utilizan para crear aplicaciones web",
+    };
   },
 };
 </script>
