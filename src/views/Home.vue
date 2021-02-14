@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <h3 v-miDirectiva="'lightgrey'">{{ titulo | toUppercase }}</h3>
-    <Carrusel></Carrusel>
+    <Carrusel />
     <h3 v-miDirectiva="'lightgrey'">{{ parrafo }}</h3>
-    <Cards></Cards>
+    <Cards />
   </div>
 </template>
 

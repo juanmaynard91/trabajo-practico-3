@@ -1,43 +1,36 @@
 <template>
   <div>
-    <button class="btn btn-primary" @click="filtrar()">Filtrar nuevos</button>
+     
+    <!-- <button class="btn btn-primary" @click="mostrarTodo()">Mostrar todo</button>
+    <button class="btn btn-primary" @click="filtrar()">Filtrar nuevos</button> 
+    <ModalAgregar /> -->
+    <Cheaks />
 
     <input type="text" v-model="puesto" />
     <input type="text" v-model="nombre" />
     <input type="text" v-model="fecha" />
     <button class="btn btn-success" @click="agregar()">Agregar</button>
 
-    <table class="table table-dark table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Puesto</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Año</th>
-          <th scope="col">Opcion</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="lenguaje in lenguajes" :key="lenguaje.id">
-          <td>{{ lenguaje.puesto }}</td>
-          <td>{{ lenguaje.nombre }}</td>
-          <td>{{ lenguaje.fecha }}</td>
-
-          <!-- agregar botones de editar y eliminar -->
-          <button class="btn btn-warning" @click="editar()">Editar</button>
-          <button class="btn btn-danger" @click="eliminar(lenguaje.id)">
-            Eliminar
-          </button>
-
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
+    <ArrayLenguaje
+      :lenguajeArray="lenguajes"
+      @editarFila="editar"
+      @eliminarFila="eliminar"
+    />
   </div>
 </template>
 
 <script>
+import ArrayLenguaje from "./ArrayLenguaje.vue";
+import Cheaks from "./Cheaks";
+// import ModalAgregar from "./ModalAgregar";
+
 export default {
   name: "Table",
+  components: {
+    ArrayLenguaje,
+    Cheaks,
+    //ModalAgregar,
+  },
 
   data() {
     return {
@@ -45,7 +38,7 @@ export default {
       puesto: "",
       nombre: "",
       fecha: "",
-      
+      id: 16, // lo inicializo en 16 porque si arranco de 0 me tira error (ID duplicados)
     };
   },
 
@@ -68,23 +61,31 @@ export default {
         puesto: this.puesto,
         nombre: this.nombre,
         fecha: this.fecha,
+        id: this.id,
       });
-      (this.puesto = ""), (this.nombre = ""), (this.fecha = "");
+      this.puesto = "", 
+      this.nombre = "", 
+      this.fecha = "", 
+      this.id++;
     },
 
     eliminar(id) {
       this.lenguajes = this.lenguajes.filter((lenguaje) => lenguaje.id !== id);
     },
 
-    editar() {
-      console.log(event.target.innerHTML);
+    editar(id) {
+      console.log(id, this.lenguajes[id - 1]);
     },
 
     filtrar() {
       this.lenguajes = this.lenguajes.filter(
         (lenguaje) => lenguaje.fecha >= 2000
       );
-      console.log(this.lenguajes);
+    },
+
+    // v-show junto con filtrar o v-if con v-else
+    mostrarTodo() {
+      this.getLenguajes();
     },
   },
 };

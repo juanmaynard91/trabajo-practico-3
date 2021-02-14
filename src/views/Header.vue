@@ -22,7 +22,7 @@
             </li>
             <li class="nav-item">
               <router-link class="nav-link active" to="/top"
-                >Top 10 lenguajes</router-link
+                >Top lenguajes</router-link
               >
             </li>
 
