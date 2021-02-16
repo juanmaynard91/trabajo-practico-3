@@ -1,10 +1,10 @@
-<template >
-    <div >
-            <div class="modal fade" id="ModalAgregar" tabindex="-1" aria-labelledby="ModalAgregar" aria-hidden="true"> 
+<template>
+     <div >
+            <div class="modal fade" id="ModalEditar" tabindex="-1" aria-labelledby="ModalEditar" aria-hidden="true"> 
               <div class="modal-dialog">
                <div class="modal-content">
                 <div class="modal-header">
-                   <h5 class="modal-title">Agregar lenguaje</h5>
+                   <h5 class="modal-title">Editar lenguaje</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                    </button>
@@ -13,7 +13,7 @@
                   <form >
                      <div class="form-group">
                     <label for="Puesto" class="form-label">Puesto</label>
-                    <input type="text" class="form-control" id="Puesto" placeholder="Ingrese el puesto del lenguaje"  v-model="puesto">
+                    <input type="text" class="form-control" id="Puesto" placeholder="puesto"  v-model="puesto">
                    </div>
                    <div class="form-group">
                       <label for="Nombre">Nombre</label>
@@ -26,38 +26,42 @@
                </form>          
                </div>
                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" @click='limpiarInput'>Cerrar</button>
-                  <button type="submit" class="btn btn-primary" data-dismiss="modal" @click='agregarLenguaje'>Agregar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                  <button type="submit" class="btn btn-primary" data-dismiss="modal" @click='editarLenguaje'>Guardar cambios</button>
               </div>
               </div>
             </div>
         </div>
     </div>
 </template>
+
 <script>
 export default {
-    data() {
+   data() {
        return {
           puesto: '', nombre:'', fecha:''
        }
     },
+    props:{
+       lenguaje:{
+          type:Object,
+          required:true,
+       }
+
+    },
 
     methods: {
-       agregarLenguaje(){
+       editarLenguaje(){
           console.log("entro");
-          this.$emit("agregarLenguaje", {puesto:this.puesto, nombre:this.nombre, fecha:this.fecha});
-          this.puesto='';
-          this.nombre='';
-          this.fecha='';
+          this.$emit("editarLenguaje", {puesto:this.puesto, nombre:this.nombre, fecha:this.fecha});
+          // this.puesto='';
+          // this.nombre='';
+          // this.fecha='';
     },
-       limpiarInput(){
-          this.puesto='';
-          this.nombre='';
-          this.fecha='';
-       }
+       
     },
-}
+};
 </script>
-<style >
-    
+
+<style>
 </style>

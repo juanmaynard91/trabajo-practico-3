@@ -1,35 +1,36 @@
 <template>
-  <div>
+  <div >
      
-    <!-- <button class="btn btn-primary" @click="mostrarTodo()">Mostrar todo</button>
-    <button class="btn btn-primary" @click="filtrar()">Filtrar nuevos</button> 
-    <ModalAgregar /> -->
-    <Cheaks />
+   <ModalAgregar v-show="displayModalAgregar" @agregarLenguaje="PushearLenguaje"> </ModalAgregar>
 
-    <input type="text" v-model="puesto" />
-    <input type="text" v-model="nombre" />
-    <input type="text" v-model="fecha" />
-    <button class="btn btn-success" @click="agregar()">Agregar</button>
+   <Cheaks />
 
-    <ArrayLenguaje
+    <ArrayLenguaje  @delete="eliminarLeng"  @editar="editarLeng"
       :lenguajeArray="lenguajes"
       @editarFila="editar"
-      @eliminarFila="eliminar"
+      
     />
+
+     <!-- Button trigger modal Agregar -->
+         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAgregar" @click.prevent="displayModalAgregar=true">
+         Agregar lenguaje
+         </button>
   </div>
 </template>
 
 <script>
 import ArrayLenguaje from "./ArrayLenguaje.vue";
 import Cheaks from "./Cheaks";
-// import ModalAgregar from "./ModalAgregar";
+import ModalAgregar from './ModalAgregar'
+
 
 export default {
   name: "Table",
   components: {
     ArrayLenguaje,
     Cheaks,
-    //ModalAgregar,
+    ModalAgregar,
+  
   },
 
   data() {
@@ -38,6 +39,7 @@ export default {
       puesto: "",
       nombre: "",
       fecha: "",
+      displayModalAgregar:false,
       id: 16, // lo inicializo en 16 porque si arranco de 0 me tira error (ID duplicados)
     };
   },
@@ -56,21 +58,20 @@ export default {
         });
     },
 
-    agregar() {
-      this.lenguajes.push({
-        puesto: this.puesto,
-        nombre: this.nombre,
-        fecha: this.fecha,
-        id: this.id,
-      });
-      this.puesto = "", 
-      this.nombre = "", 
-      this.fecha = "", 
-      this.id++;
+    PushearLenguaje(leng){
+      console.log(leng);
+      this.lenguajes.push(leng);
+      this.lenguajes.sort(function(a,b){ return a.puesto -b.puesto})
     },
 
-    eliminar(id) {
-      this.lenguajes = this.lenguajes.filter((lenguaje) => lenguaje.id !== id);
+    eliminarLeng(id) {  console.log("entro");
+      this.lenguajes = this.lenguajes.filter((lenguaje) => lenguaje.id !== id.id ); console.log(id.id)
+    },
+    editarLeng(lenguaje){
+            this.lenguajes = this.lenguajes.map((elem) => {let obj=elem; console.log (lenguaje, obj);
+              if (obj.id==lenguaje.id) obj=lenguaje; return obj}); 
+                    this.lenguajes.sort(function(a,b){ return a.puesto -b.puesto})
+
     },
 
     editar(id) {

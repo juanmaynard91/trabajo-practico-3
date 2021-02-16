@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="page-footer footer navbar navbar-fixed-bottom">
     <div class="card text-center border-light mb-3 w-100">
       <div class="card-header card-header text-dark">
         <ul class="nav nav-pills card-header-pills">
@@ -28,8 +28,9 @@ export default {};
   bottom: 0;
   width: 100%;
   height: 40px;
-  background: black;
+  background: transparent;
   color: white
+ 
 }
 
 </style>
