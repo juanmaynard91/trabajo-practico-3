@@ -14,6 +14,10 @@
       @editarFila="editar"
     />
 
+      <div v-if="mostrarBarra" class="progress mb-3 ">
+            <div id="progressBar" v-bind:class="{ 'progress-bar progress-bar-striped progress-bar-animated w3-container w3-round w3-blue inicio transicion':!completarBarra, 'progress-bar progress-bar-striped progress-bar-animated w3-container w3-round w3-blue transicion final':completarBarra}" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> </div>
+     </div>
+
     <button
       type="button"
       class="btn btn-primary"
@@ -23,6 +27,7 @@
     >
       Agregar lenguaje
     </button>
+
   </div>
 </template>
 
@@ -30,6 +35,7 @@
 import ArrayLenguaje from "./ArrayLenguaje.vue";
 import Cheaks from "./Cheaks";
 import ModalAgregar from "./ModalAgregar";
+
 
 export default {
   name: "Table",
@@ -44,8 +50,12 @@ export default {
       lenguajes: [],
       displayModalAgregar: false,
       checked: false,
+      completarBarra: false,
+      mostrarBarra:false,
     };
   },
+
+
 
   // hook
   mounted() {
@@ -62,11 +72,20 @@ export default {
     },
 
     PushearLenguaje(leng) {
-      console.log(leng);
-      this.lenguajes.push(leng);
+      this.mostrarBarra= true,
+      setTimeout(()=>{
+                    this.completarBarra= true,
+                    console.log(this.completarBarra);
+                    },500); 
+      setTimeout(()=>{
+            this.completarBarra= false,
+            this.mostrarBarra= false;
+             console.log(leng);
+             this.lenguajes.push(leng);
       /* this.lenguajes.sort(function (a, b) {
         return a.puesto - b.puesto;
       }); */
+      },2000); 
     },
 
     eliminarLeng(id) {
@@ -77,11 +96,20 @@ export default {
       console.log(id.id);
     },
     editarLeng(lenguaje) {
+      this.mostrarBarra= true,
+      setTimeout(()=>{
+                    this.completarBarra= true,
+                    console.log(this.completarBarra);
+                    },500); 
+      setTimeout(()=>{
+            this.completarBarra= false,
+            this.mostrarBarra= false;
       this.lenguajes = this.lenguajes.map((elem) => {
         let obj = elem; /*console.log (lenguaje, obj);*/
         if (obj.id == lenguaje.id) obj = lenguaje;
         return obj;
       });
+      },2000); 
       //this.lenguajes.sort(function(a,b){ return a.puesto -b.puesto})
     },
 
@@ -103,5 +131,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+   .inicio{
+    width: 0%;
+}
+
+.transicion{
+    transition: width 2s;
+}
+
+.final{
+    width: 100%;
+}
+
 </style>

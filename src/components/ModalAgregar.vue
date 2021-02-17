@@ -17,17 +17,17 @@
                    </div>
                    <div class="form-group">
                       <label for="Nombre">Nombre</label>
-                     <input type="text" class="form-control" id="Nombre" placeholder="Ingrese el nombre del lenguaje" v-model="nombre">
+                     <input type="text" class="form-control" id="Nombre" required placeholder="Ingrese el nombre del lenguaje" v-model="nombre">
                    </div>
                  <div class="form-group">
                  <label for="Fecha">Fecha</label>
-                 <input type="text" class="form-control" id="Fecha" placeholder="Ingrese la fecha de creación del lenguaje" v-model="fecha">
+                 <input type="text" class="form-control" id="Fecha" required="true" placeholder="Ingrese la fecha de creación del lenguaje" v-model="fecha">
                 </div>
                </form>          
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal" @click='limpiarInput'>Cerrar</button>
-                  <button type="submit" class="btn btn-primary" data-dismiss="modal" @click='agregarLenguaje'>Agregar</button>
+                  <button type="submit" class="btn btn-primary" data-dismiss="modal" @click.prevent='agregarLenguaje'>Agregar</button>
               </div>
               </div>
             </div>
@@ -36,7 +36,9 @@
 </template>
 
 <script>
+
 export default {
+  
     data() {
        return {
           puesto: '',
@@ -48,12 +50,12 @@ export default {
 
     methods: {
        agregarLenguaje(){
-          console.log("entro");
-          this.$emit("agregarLenguaje", {puesto:this.puesto, nombre:this.nombre, fecha:this.fecha ,id: this.id});
-          this.puesto='';
-          this.nombre='';
-          this.fecha='';
-          this.id++;
+            console.log("entro");
+            this.$emit("agregarLenguaje", {puesto:this.puesto, nombre:this.nombre, fecha:this.fecha ,id: this.id});
+            this.puesto='';
+            this.nombre='';
+            this.fecha='';
+            this.id++;
     },
        limpiarInput(){
           this.puesto='';
