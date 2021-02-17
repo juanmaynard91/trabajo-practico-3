@@ -34,21 +34,26 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     data() {
        return {
-          puesto: '', nombre:'', fecha:''
+          puesto: '',
+          nombre:'',
+          fecha:'' , 
+          id: 16,  // lo inicializo en 16 porque si arranco de 0 me tira error (ID duplicados)
        }
     },
 
     methods: {
        agregarLenguaje(){
           console.log("entro");
-          this.$emit("agregarLenguaje", {puesto:this.puesto, nombre:this.nombre, fecha:this.fecha});
+          this.$emit("agregarLenguaje", {puesto:this.puesto, nombre:this.nombre, fecha:this.fecha ,id: this.id});
           this.puesto='';
           this.nombre='';
           this.fecha='';
+          this.id++;
     },
        limpiarInput(){
           this.puesto='';
@@ -58,6 +63,6 @@ export default {
     },
 }
 </script>
+
 <style >
-    
 </style>

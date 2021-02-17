@@ -26,7 +26,7 @@
                </form>          
                </div>
                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" @click='limpiarInput'>Cerrar</button>
                   <button type="submit" class="btn btn-primary" data-dismiss="modal" @click='editarLenguaje'>Guardar cambios</button>
               </div>
               </div>
@@ -42,6 +42,7 @@ export default {
           puesto: '', nombre:'', fecha:''
        }
     },
+    /*
     props:{
        lenguaje:{
           type:Object,
@@ -49,7 +50,7 @@ export default {
        }
 
     },
-
+*/
     methods: {
        editarLenguaje(){
           console.log("entro");
@@ -58,6 +59,11 @@ export default {
           // this.nombre='';
           // this.fecha='';
     },
+          limpiarInput(){
+          this.puesto='';
+          this.nombre='';
+          this.fecha='';
+       }
        
     },
 };

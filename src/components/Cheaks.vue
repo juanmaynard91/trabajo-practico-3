@@ -1,27 +1,27 @@
 <template>
   <div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-  <label class="form-check-label" for="flexRadioDefault1">
-    Mostrar todo
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-  <label class="form-check-label" for="flexRadioDefault2">
-    Filtrar nuevos
-  </label>
-</div>
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+      <input type="checkbox" class="btn-check" id="filtrarNuevos" autocomplete="off" v-model="checked" @click="filtrarTabla(checked)">
+      <label class="btn btn-primary" for="filtrarNuevos">{{ checked ? "Mostrar todos" : "Filtrar nuevos" }}</label>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-name: "Cheaks",
-   
+    name: "Cheaks",
+    data(){
+      return{
+          checked: false,
+      }
+    },
+    methods:{
+        filtrarTabla(checked){
+          this.$emit("filtrarNuevos", checked)
+        }
+    },
 }
 </script>
 
 <style>
-
 </style>
