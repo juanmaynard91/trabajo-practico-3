@@ -13,7 +13,7 @@
                   <form >
                      <div class="form-group">
                     <label for="Puesto" class="form-label">Puesto</label>
-                    <input type="text" class="form-control" id="Puesto" placeholder="puesto"  v-model="puesto">
+                    <input type="text" class="form-control" id="Puesto" placeholder="puesto" v-model="puesto">
                    </div>
                    <div class="form-group">
                       <label for="Nombre">Nombre</label>

@@ -14,8 +14,8 @@
       @editarFila="editar"
     />
 
-      <div v-if="mostrarBarra" class="progress mb-3 ">
-            <div id="progressBar" v-bind:class="{ 'progress-bar progress-bar-striped progress-bar-animated w3-container w3-round w3-blue inicio transicion':!completarBarra, 'progress-bar progress-bar-striped progress-bar-animated w3-container w3-round w3-blue transicion final':completarBarra}" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> </div>
+     <div v-if="mostrarBarra" class="progress mb-3 ">
+        <div id="progressBar" v-bind:class="{ 'progress-bar progress-bar-striped progress-bar-animated w3-container w3-round w3-blue inicio transicion':!completarBarra, 'progress-bar progress-bar-striped progress-bar-animated w3-container w3-round w3-blue transicion final':completarBarra}" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> </div>
      </div>
 
     <button
@@ -36,7 +36,6 @@ import ArrayLenguaje from "./ArrayLenguaje.vue";
 import Cheaks from "./Cheaks";
 import ModalAgregar from "./ModalAgregar";
 
-
 export default {
   name: "Table",
   components: {
@@ -54,8 +53,6 @@ export default {
       mostrarBarra:false,
     };
   },
-
-
 
   // hook
   mounted() {
@@ -95,6 +92,7 @@ export default {
       );
       console.log(id.id);
     },
+
     editarLeng(lenguaje) {
       this.mostrarBarra= true,
       setTimeout(()=>{
@@ -129,19 +127,16 @@ export default {
     },
   },
 };
-</script>
 
+</script>
 <style scoped>
    .inicio{
     width: 0%;
 }
-
 .transicion{
     transition: width 2s;
 }
-
 .final{
     width: 100%;
 }
-
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav id="header" class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">TP3</a>
         <button
@@ -25,10 +25,9 @@
                 >Top lenguajes</router-link
               >
             </li>
-
             <li class="nav-item">
-              <router-link class="nav-link active" to="/tercero"
-                >Tercera views</router-link
+              <router-link class="nav-link active" to="/info"
+                >Saber mas</router-link
               >
             </li>
           </ul>
@@ -46,9 +45,8 @@ nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-/* TAREA: evitar colision con bootstrap sin usar el important */
-/* para evitar el !important el elemento que sea mas especifico gana (osea mientras mas especifico mejor) */
-nav a.router-link-exact-active {
-  color: #42b983 !important;
+
+nav#header a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
