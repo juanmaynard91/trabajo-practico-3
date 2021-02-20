@@ -60,13 +60,11 @@ export default {
      eliminar() {
       this.$emit("delete", {id:this.IdtoDelete} ); console.log("array", this.IdtoDelete)
       },
-
      Aeditar(id) {
           this.IdtoEdit = id;
     },
     EditarLenguaje(lang){
       this.$emit("editar", {id:this.IdtoEdit, puesto:lang.puesto, nombre:lang.nombre, fecha:lang.fecha} );
-      
     }
 },
 }

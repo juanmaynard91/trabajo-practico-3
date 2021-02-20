@@ -42,29 +42,16 @@ export default {
           puesto: '', nombre:'', fecha:''
        }
     },
-    /*
-    props:{
-       lenguaje:{
-          type:Object,
-          required:true,
-       }
-
-    },
-*/
     methods: {
        editarLenguaje(){
           console.log("entro");
           this.$emit("editarLenguaje", {puesto:this.puesto, nombre:this.nombre, fecha:this.fecha});
-          // this.puesto='';
-          // this.nombre='';
-          // this.fecha='';
     },
           limpiarInput(){
           this.puesto='';
           this.nombre='';
           this.fecha='';
        }
-       
     },
 };
 </script>

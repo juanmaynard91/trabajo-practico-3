@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="Home">
     <h2 v-miDirectiva="'lightgrey'">{{ titulo | toUppercase }}</h2>
     <Carrusel />
     <h3 v-miDirectiva="'lightgrey'">{{ parrafo }}</h3>
