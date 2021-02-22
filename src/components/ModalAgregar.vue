@@ -13,15 +13,15 @@
                   <form >
                      <div class="form-group">
                     <label for="Puesto" class="form-label">Puesto</label>
-                    <input type="text" class="form-control" id="Puesto" placeholder="Ingrese el puesto del lenguaje"  v-model="puesto">
+                    <input type="text" class="form-control" required="true" placeholder="Ingrese el puesto del lenguaje" v-model="puesto">
                    </div>
                    <div class="form-group">
                       <label for="Nombre">Nombre</label>
-                     <input type="text" class="form-control" id="Nombre" required placeholder="Ingrese el nombre del lenguaje" v-model="nombre">
+                     <input type="text" class="form-control" required="true" placeholder="Ingrese el nombre del lenguaje" v-model="nombre">
                    </div>
                  <div class="form-group">
                  <label for="Fecha">Fecha</label>
-                 <input type="text" class="form-control" id="Fecha" required="true" placeholder="Ingrese la fecha de creación del lenguaje" v-model="fecha">
+                 <input type="text" class="form-control" required="true" placeholder="Ingrese la fecha de creación del lenguaje" v-model="fecha">
                 </div>
                </form>          
                </div>
