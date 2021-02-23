@@ -1,7 +1,7 @@
 <template>
   <div>
      <ModalEliminar v-show="displayModalEliminar" @delete="eliminar"> </ModalEliminar>
-     <ModalEditar v-show="displayModalEditar" @editarLenguaje="EditarLenguaje"> </ModalEditar>
+     <ModalEditar v-show="displayModalEditar" @editarLenguaje="EditarLenguaje" :puestoEditar="this.LengtoEdit.puesto" :nombreEditar="LengtoEdit.nombre" :fechaEditar="LengtoEdit.fecha"> </ModalEditar>
 
     <table class="table table-dark table-striped">
       <thead>
@@ -18,7 +18,7 @@
           <td>{{ lenguaje.nombre }}</td>
           <td>{{ lenguaje.fecha }}</td>
            <!-- agregar botones de editar y eliminar -->
-          <button class="btn btn-warning" @click="Aeditar(lenguaje.id)" data-toggle="modal" data-target="#ModalEditar" @click.prevent="displayModalEditar=true">Editar</button>
+          <button class="btn btn-warning" @click="Aeditar(lenguaje)" data-toggle="modal" data-target="#ModalEditar" @click.prevent="displayModalEditar=true">Editar</button>
 
           <button class="btn btn-danger" @click="Aeliminar(lenguaje.id)" data-toggle="modal" data-target="#EliminarModal">
             Eliminar
@@ -45,7 +45,7 @@ export default {
       displayModalEliminar: false,
       IdtoDelete:null,
       displayModalEditar:false,
-      IdtoEdit:null,
+      LengtoEdit:{id:1,puesto:1,nombre:"",fecha:""},
       lengEditado:[],
     }
   },
@@ -61,11 +61,11 @@ export default {
       this.$emit("delete", {id:this.IdtoDelete} ); console.log("array", this.IdtoDelete)
       },
 
-     Aeditar(id) {
-          this.IdtoEdit = id;
+     Aeditar(lenguaje) {
+          this.LengtoEdit = lenguaje; console.log("a editar", this.LengtoEdit.puesto)
     },
     EditarLenguaje(lang){
-      this.$emit("editar", {id:this.IdtoEdit, puesto:lang.puesto, nombre:lang.nombre, fecha:lang.fecha} );
+      this.$emit("editar", {id:this.LengtoEdit.id, puesto:lang.puesto, nombre:lang.nombre, fecha:lang.fecha} );
       
     }
 },

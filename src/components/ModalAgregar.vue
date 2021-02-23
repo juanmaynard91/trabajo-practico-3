@@ -1,6 +1,6 @@
 <template >
     <div >
-            <div class="modal fade" id="ModalAgregar" tabindex="-1" aria-labelledby="ModalAgregar" aria-hidden="true"> 
+            <div @submit.prevent='agregarLenguaje' class="modal fade" id="ModalAgregar" tabindex="-1" aria-labelledby="ModalAgregar" aria-hidden="true"> 
               <div class="modal-dialog">
                <div class="modal-content">
                 <div class="modal-header">
@@ -13,7 +13,7 @@
                   <form >
                      <div class="form-group">
                     <label for="Puesto" class="form-label">Puesto</label>
-                    <input type="text" class="form-control" id="Puesto" placeholder="Ingrese el puesto del lenguaje"  v-model="puesto">
+                    <input type="text" class="form-control" id="Puesto" placeholder="Ingrese el puesto del lenguaje" v-model="puesto" required>
                    </div>
                    <div class="form-group">
                       <label for="Nombre">Nombre</label>
@@ -21,14 +21,15 @@
                    </div>
                  <div class="form-group">
                  <label for="Fecha">Fecha</label>
-                 <input type="text" class="form-control" id="Fecha" required="true" placeholder="Ingrese la fecha de creación del lenguaje" v-model="fecha">
+                 <input type="text" class="form-control" id="Fecha" required placeholder="Ingrese la fecha de creación del lenguaje" v-model="fecha">
                 </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" @click='limpiarInput'>Cerrar</button>
+                  <button type="submit" class="btn btn-primary" >Agregar</button>
+              </div>
                </form>          
                </div>
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" @click='limpiarInput'>Cerrar</button>
-                  <button type="submit" class="btn btn-primary" data-dismiss="modal" @click.prevent='agregarLenguaje'>Agregar</button>
-              </div>
+               
               </div>
             </div>
         </div>
@@ -36,6 +37,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 
 export default {
   
@@ -51,6 +53,7 @@ export default {
     methods: {
        agregarLenguaje(){
             console.log("entro");
+            $('#ModalAgregar').modal('hide');
             this.$emit("agregarLenguaje", {puesto:this.puesto, nombre:this.nombre, fecha:this.fecha ,id: this.id});
             this.puesto='';
             this.nombre='';
