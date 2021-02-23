@@ -82,7 +82,6 @@ export default {
           this.nombre='';
           this.fecha='';
        }
-       
     },
 };
 </script>

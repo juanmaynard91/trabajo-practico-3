@@ -24,13 +24,11 @@ export default {};
 
 <style>
 .footer {
- position: fixed;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 40px;
   background: transparent;
-  color: white
- 
+  color: white;
 }
-
 </style>

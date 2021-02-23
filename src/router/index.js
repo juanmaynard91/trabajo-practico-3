@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Table from '../components/Table.vue'
-import SaberMas from '../views/SaberMas.vue'
+import TerceraView from '../views/TerceraView.vue'
 
 Vue.use(VueRouter)
 
@@ -21,7 +21,7 @@ const routes = [
   {
     path: '/info',
     name: 'SaberMas',
-    component: SaberMas
+    component: TerceraView
   },
 ]
 

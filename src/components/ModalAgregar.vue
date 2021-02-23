@@ -17,7 +17,7 @@
                    </div>
                    <div class="form-group">
                       <label for="Nombre">Nombre</label>
-                     <input type="text" class="form-control" id="Nombre" required placeholder="Ingrese el nombre del lenguaje" v-model="nombre">
+                     <input type="text" class="form-control" required="true" placeholder="Ingrese el nombre del lenguaje" v-model="nombre">
                    </div>
                  <div class="form-group">
                  <label for="Fecha">Fecha</label>
