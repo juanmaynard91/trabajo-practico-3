@@ -1,7 +1,7 @@
 <template>
   <div>
      <ModalEliminar v-show="displayModalEliminar" @delete="eliminar"> </ModalEliminar>
-     <ModalEditar v-show="displayModalEditar" @editarLenguaje="EditarLenguaje" :puestoEditar="this.LengtoEdit.puesto" :nombreEditar="LengtoEdit.nombre" :fechaEditar="LengtoEdit.fecha"> </ModalEditar>
+     <ModalEditar v-show="displayModalEditar" @editarLenguaje="EditarLenguaje" :puestoEditar="this.LengtoEdit.puesto" :nombreEditar="this.LengtoEdit.nombre" :fechaEditar="this.LengtoEdit.fecha"> </ModalEditar>
 
     <table class="table table-dark table-striped">
       <thead>
@@ -45,7 +45,7 @@ export default {
       displayModalEliminar: false,
       IdtoDelete:null,
       displayModalEditar:false,
-      LengtoEdit:{id:1,puesto:1,nombre:"",fecha:""},
+      LengtoEdit:{id:1,puesto:1,nombre:"",fecha:1},
       lengEditado:[],
     }
   },
@@ -62,9 +62,10 @@ export default {
       },
 
      Aeditar(lenguaje) {
-          this.LengtoEdit = lenguaje; console.log("a editar", this.LengtoEdit.puesto)
+          this.LengtoEdit = lenguaje; console.log("a editar", this.LengtoEdit.fecha)
     },
     EditarLenguaje(lang){
+      this.displayModalEditar=false;
       this.$emit("editar", {id:this.LengtoEdit.id, puesto:lang.puesto, nombre:lang.nombre, fecha:lang.fecha} );
       
     }

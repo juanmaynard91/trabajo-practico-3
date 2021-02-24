@@ -1,5 +1,6 @@
 <template >
     <div >
+            <!-- Modal de bootstrap-->
             <div @submit.prevent='agregarLenguaje' class="modal fade" id="ModalAgregar" tabindex="-1" aria-labelledby="ModalAgregar" aria-hidden="true"> 
               <div class="modal-dialog">
                <div class="modal-content">
@@ -13,7 +14,7 @@
                   <form >
                      <div class="form-group">
                     <label for="Puesto" class="form-label">Puesto</label>
-                    <input type="text" class="form-control" id="Puesto" placeholder="Ingrese el puesto del lenguaje" v-model="puesto" required>
+                    <input type="number" class="form-control" id="Puesto" placeholder="Ingrese el puesto del lenguaje" v-model="puesto" required>
                    </div>
                    <div class="form-group">
                       <label for="Nombre">Nombre</label>
@@ -21,7 +22,7 @@
                    </div>
                  <div class="form-group">
                  <label for="Fecha">Fecha</label>
-                 <input type="text" class="form-control" id="Fecha" required placeholder="Ingrese la fecha de creación del lenguaje" v-model="fecha">
+                 <input type="number" class="form-control" id="Fecha" required placeholder="Ingrese la fecha de creación del lenguaje" v-model="fecha">
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal" @click='limpiarInput'>Cerrar</button>
