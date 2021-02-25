@@ -1,5 +1,6 @@
 <template>
   <div class="Home">
+    <!-- agrego la directiva perzonalizada y filter -->
     <h2 v-miDirectiva="'lightgrey'">{{ titulo | toUppercase }}</h2>
     <Carrusel />
     <h3 v-miDirectiva="'lightgrey'">{{ parrafo }}</h3>

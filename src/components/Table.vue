@@ -80,40 +80,39 @@ export default {
     PushearLenguaje(leng) {
       (this.mostrarBarra = true),
         setTimeout(() => {
-          (this.completarBarra = true), console.log(this.completarBarra);
+          this.completarBarra = true;
         }, 500);
       setTimeout(() => {
         (this.completarBarra = false), (this.mostrarBarra = false);
-        console.log(leng);
         this.lenguajes.push(leng);
-        /* this.lenguajes.sort(function (a, b) {
-        return a.puesto - b.puesto;
-      }); */
+        this.lenguajes.sort(function (a, b) {
+          return a.puesto - b.puesto;
+        });
       }, 2000);
     },
 
     eliminarLeng(id) {
-      console.log("entro");
       this.lenguajes = this.lenguajes.filter(
         (lenguaje) => lenguaje.id !== id.id
       );
-      console.log(id.id);
     },
 
     editarLeng(lenguaje) {
       (this.mostrarBarra = true),
         setTimeout(() => {
-          (this.completarBarra = true), console.log(this.completarBarra);
+          this.completarBarra = true;
         }, 500);
       setTimeout(() => {
         (this.completarBarra = false), (this.mostrarBarra = false);
         this.lenguajes = this.lenguajes.map((elem) => {
-          let obj = elem; /*console.log (lenguaje, obj);*/
+          let obj = elem;
           if (obj.id == lenguaje.id) obj = lenguaje;
           return obj;
         });
+        this.lenguajes.sort(function (a, b) {
+          return a.puesto - b.puesto;
+        });
       }, 2000);
-      //this.lenguajes.sort(function(a,b){ return a.puesto -b.puesto})
     },
 
     editar(id) {
@@ -121,7 +120,6 @@ export default {
     },
 
     filtrar(checked) {
-      console.log("filtrado");
       if (checked !== true) {
         this.lenguajes = this.lenguajes.filter(
           (lenguaje) => lenguaje.fecha >= 2000

@@ -19,7 +19,6 @@
           <td>{{ lenguaje.fecha }}</td>
            <!-- agregar botones de editar y eliminar -->
           <button class="btn btn-warning" @click="Aeditar(lenguaje)" data-toggle="modal" data-target="#ModalEditar" @click.prevent="displayModalEditar=true">Editar</button>
-
           <button class="btn btn-danger" @click="Aeliminar(lenguaje.id)" data-toggle="modal" data-target="#EliminarModal">
             Eliminar
           </button>
@@ -58,11 +57,11 @@ export default {
           this.IdtoDelete = id;
     },
      eliminar() {
-      this.$emit("delete", {id:this.IdtoDelete} ); console.log("array", this.IdtoDelete)
+      this.$emit("delete", {id:this.IdtoDelete} ); 
       },
 
      Aeditar(lenguaje) {
-          this.LengtoEdit = lenguaje; console.log("a editar", this.LengtoEdit.fecha)
+          this.LengtoEdit = lenguaje; 
     },
     EditarLenguaje(lang){
       this.displayModalEditar=false;

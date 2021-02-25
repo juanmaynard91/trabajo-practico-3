@@ -53,7 +53,6 @@ export default {
 
     methods: {
        agregarLenguaje(){
-            console.log("entro");
             $('#ModalAgregar').modal('hide');
             this.$emit("agregarLenguaje", {puesto:this.puesto, nombre:this.nombre, fecha:this.fecha ,id: this.id});
             this.puesto='';
