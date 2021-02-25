@@ -11,7 +11,6 @@
       :lenguajeArray="lenguajes"
       @delete="eliminarLeng"
       @editar="editarLeng"
-      @editarFila="editar"
     />
 
     <div v-if="mostrarBarra" class="progress mb-3">
@@ -60,6 +59,7 @@ export default {
       checked: false,
       completarBarra: false,
       mostrarBarra: false,
+      id:0,
     };
   },
 
@@ -74,7 +74,8 @@ export default {
         .then((res) => res.json())
         .then((data) => {
           this.lenguajes = data;
-        });
+          this.id=this.lenguajes.length
+          });
     },
 
     PushearLenguaje(leng) {
@@ -84,7 +85,9 @@ export default {
         }, 500);
       setTimeout(() => {
         (this.completarBarra = false), (this.mostrarBarra = false);
-        this.lenguajes.push(leng);
+        this.id++;
+        let objeto= {id: this.id, puesto:leng.puesto, nombre:leng.nombre, fecha:leng.fecha}
+        this.lenguajes.push(objeto);
         this.lenguajes.sort(function (a, b) {
           return a.puesto - b.puesto;
         });
@@ -113,10 +116,6 @@ export default {
           return a.puesto - b.puesto;
         });
       }, 2000);
-    },
-
-    editar(id) {
-      console.log(id, this.lenguajes[id - 1]);
     },
 
     filtrar(checked) {

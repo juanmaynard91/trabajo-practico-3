@@ -47,18 +47,16 @@ export default {
           puesto: '',
           nombre:'',
           fecha:'' , 
-          id: 16,  // lo inicializo en 16 porque si arranco de 0 me tira error (ID duplicados)
        }
     },
 
     methods: {
        agregarLenguaje(){
             $('#ModalAgregar').modal('hide');
-            this.$emit("agregarLenguaje", {puesto:this.puesto, nombre:this.nombre, fecha:this.fecha ,id: this.id});
+            this.$emit("agregarLenguaje", {puesto:Number(this.puesto), nombre:this.nombre, fecha:Number(this.fecha)});
             this.puesto='';
             this.nombre='';
             this.fecha='';
-            this.id++;
     },
        limpiarInput(){
           this.puesto='';

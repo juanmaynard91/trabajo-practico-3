@@ -49,7 +49,7 @@ export default {
        }
     },
 
-    //recibibimos en las props la info que maanda el padre
+    //recibibimos en las props la info que manda el padre
     props:{
        puestoEditar:{
           type:Number,
@@ -108,7 +108,8 @@ export default {
            $('#ModalEditar').modal('hide');
             this.$emit("editarLenguaje", {puesto:Number(this.puesto), nombre:this.nombre, fecha:Number(this.fecha)});
     },
-       //cuando cancelamos, cerramos el modal dejando el contenido del imput como estaba al abrirlo
+       //cuando cancelamos el modal, lo cerramos dejando el contenido del imput como estaba al abrirlo para el caso de
+       //que inmediatamente se quiera hacer click sobre el mismo elemento para editarlo
        cerrar() {
           $('#ModalEditar').modal('hide');
           this.puesto=this.puestoEditar;

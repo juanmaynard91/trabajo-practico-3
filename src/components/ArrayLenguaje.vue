@@ -45,7 +45,6 @@ export default {
       IdtoDelete:null,
       displayModalEditar:false,
       LengtoEdit:{id:1,puesto:1,nombre:"",fecha:1},
-      lengEditado:[],
     }
   },
   props: {
