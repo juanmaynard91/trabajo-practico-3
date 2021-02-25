@@ -7,6 +7,7 @@
 
     <Cheaks @filtrarNuevos="filtrar" />
 
+    <!-- lenguajeArrays prop del componente padre recibe dinamicamente el array lenguajes -->
     <ArrayLenguaje
       :lenguajeArray="lenguajes"
       @delete="eliminarLeng"
@@ -59,7 +60,7 @@ export default {
       checked: false,
       completarBarra: false,
       mostrarBarra: false,
-      id:0,
+      id: 0,
     };
   },
 
@@ -74,8 +75,8 @@ export default {
         .then((res) => res.json())
         .then((data) => {
           this.lenguajes = data;
-          this.id=this.lenguajes.length
-          });
+          this.id = this.lenguajes.length;
+        });
     },
 
     PushearLenguaje(leng) {
@@ -86,7 +87,12 @@ export default {
       setTimeout(() => {
         (this.completarBarra = false), (this.mostrarBarra = false);
         this.id++;
-        let objeto= {id: this.id, puesto:leng.puesto, nombre:leng.nombre, fecha:leng.fecha}
+        let objeto = {
+          id: this.id,
+          puesto: leng.puesto,
+          nombre: leng.nombre,
+          fecha: leng.fecha,
+        };
         this.lenguajes.push(objeto);
         this.lenguajes.sort(function (a, b) {
           return a.puesto - b.puesto;
@@ -94,6 +100,7 @@ export default {
       }, 2000);
     },
 
+    // devuelve todo el arreglo que no tenga ese id
     eliminarLeng(id) {
       this.lenguajes = this.lenguajes.filter(
         (lenguaje) => lenguaje.id !== id.id
