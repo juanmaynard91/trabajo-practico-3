@@ -1,4 +1,4 @@
-Ultimo Trabajo Practico de la clase para entregar
+Ultimo Trabajo Practico de la clase para entregar con vue.js
 
 https://juanmaynard91.github.io/trabajo-practico-3/
 
